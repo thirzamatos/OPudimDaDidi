@@ -3,6 +3,9 @@ api/api/bin/
 api/api/obj/
 api/.vs/
 
+# Visual Studio raiz
+.vs/
+
 # Angular
 web/node_modules/
 web/dist/
