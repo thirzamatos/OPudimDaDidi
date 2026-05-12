@@ -1,0 +1,11 @@
+# API
+api/api/bin/
+api/api/obj/
+api/.vs/
+
+# Angular
+web/node_modules/
+web/dist/
+
+# Configurações locais
+appsettings.Development.json
