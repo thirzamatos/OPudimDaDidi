@@ -1,0 +1,23 @@
+<header class="header-bar">
+  <div class="header-container">
+
+    <a routerLink="/" class="brand-area">
+      <img src="/imagens/logo.png" alt="Logo Pudim da Didi" class="logo-img" />
+      <div class="brand-text">
+        <span class="logo-nome">Pudim da Didi</span>
+        <span class="logo-sub">Pudins Artesanais</span>
+      </div>
+    </a>
+
+    <nav class="nav-center">
+      <a href="#produtos" class="nav-link-item">Produtos</a>
+      <a href="#sobre" class="nav-link-item">Sobre</a>
+      <a href="#contato" class="nav-link-item">Contato</a>
+    </nav>
+
+    <a routerLink="/carrinho" class="cart-btn">
+      <mat-icon [matBadge]="'0'" matBadgeSize="small" matBadgeColor="warn">shopping_cart</mat-icon>
+    </a>
+
+  </div>
+</header>

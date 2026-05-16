@@ -1,1 +1,144 @@
-<p>home works!</p>
+<!--Hero-->
+<section class="hero">
+    <div class="hero-content">
+
+        <span class="hero-sub">Bem vindo ao</span>
+        <h1>O Pudim da Didi</h1>
+        <P class="hero-desc">Pudins artesanais feitos com ingredientes premium e muito amor.</P>
+        <p class="hero-text">Cada pudim é preparado com cuidado especial, utilizando receitas tradicionais e ingredientes selecionados. Disponível em diversos sabores e tamanhos para a sua mesa</p>
+
+        <div class="hero-butto">
+            <a href="#produtos" class="btn-primary">Explorar Produtos</a>
+            <a href="#sobre" class="btn-outline">Saiba Mais</a>
+        </div>
+    </div>
+
+    <div class="hero-image">
+        <img src="/imagens/pudim-destaque.jpeg" alt="Pudim da Didi">
+    </div>
+</section>
+
+<div class="scroll-arrow"><mat-icon>expand_more</mat-icon></div>
+
+<!--produtos-->
+<section class="produtos-section" id="produtos">
+    <div class="section-header">
+        <span class="section-sub">Nossa Seleção</span>
+        <h2>Pudins Artesanais</h2>
+        <p>Cada sabor é uma experiência única, preparada com ingredientes selecionados e muito carinho.</p>
+    </div>
+
+    @for(categoria of categorias; track categoria.nome) {
+        <div class="categoria-label">{{categoria.nome}}</div>
+        <div class="produtos-grid">
+            @for(produto of categoria.produtos; track produto.nome) {
+                <div class="produto-card">
+                    <div class="produto-img">
+                        <img [src]="produto.imagem" [alt]="produto.nome">
+                        <span class="produto-tag">{{categoria.nome}}</span>
+                    </div>
+
+                    <div class="produto-info">
+                        <h3>{{produto.nome}}</h3>
+                        <p>{{produto.descricao}}</p>
+
+                        <div class="tamanhos">
+                            <label>Tamanho</label>
+                            <div class="tamanho-opcoes">
+                                @for (tam of produto.tamanhos; track tam.label; let i = $index) {
+                                    <div class="tamanho-opcao" [class.selecionado]="tamanhosSelecionados[produto.nome] === i" (click)="tamanhosSelecionados[produto.nome]= i">
+                                        <span class="tam-label">{{tam.label}}</span>
+                                        <span class="tam-porcoes">{{tam.porcoes}}</span>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="quantidade-row">
+                            <label>Quantidade</label>
+                            <div class="quantidade-ctrl">
+                                <button (click)="decrementar(produto.nome)">-</button>
+                                <span>{{quantidades[produto.nome]}}</span>
+                                <button (click)="incrementar(produto.nome)">+</button>
+                            </div>
+                        </div>
+
+                        <div class="produto-footer">
+                            <span class="total">Total: R$ {{getTotal(produto) | number: '1.2-2'}}</span>
+                            <button class="btn-primary">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</section>
+
+<section id="sobre" class="sobre-section">
+    <div class="sobre-content">
+        <div class="sobre-img">
+            <img src="/imagens/doce-de-leite-pudim.jpeg" alt="Pudim da Didi">
+        </div>
+        <div class="sobre-texto">
+            <span class="section-sub">Sobre Nós</span>
+            <h2>A Hístoria da Didi</h2>
+            <p>O Pudim da Didi nasceu de uma paixão por doces artesanai e pela vontade de compartilhar momentos especiais com as pessoas que amamos.</p>
+            <p>Nossa missão é transformar cada sobremesa em uma experiência inesquecível, combinando tradição, qualidade e inovação em cada colherada.</p>
+
+            <div class="sobre-cards">
+                <div class="sobre-card">
+                    <mat-icon class="sobre-icon">favorite</mat-icon>
+                    <h4>Feito com Amor</h4>
+                    <p>Cada pudim é preparado com carinho e atenção aos detalhes.</p>
+                </div>
+                <div class="sobre-card">
+                    <mat-icon class="sobre-icon">star</mat-icon>
+                    <h4>Ingredientes Premium</h4>
+                    <p>Selecionamos os melhores ingredientes para garantir qualidade.</p>
+                </div>
+                <div class="sobre-card">
+                    <mat-icon class="sobre-icon">cake</mat-icon>
+                    <h4>Sabores Únicos</h4>
+                    <p>Combinações criativas que agradam todos os paladares.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer id="contato">
+    <div class="footer-content">
+        <div class="footer-logo">
+            <div class="footer-logo-circle">
+                <img src="/imagens/logo.png" alt="Logo">
+            </div>
+            <h3>O Pudim da Didi</h3>
+            <p>Pudins artesanais feitos com ingredientes premium e muito amor.</p>
+        </div>
+
+        <div class="footer-col">
+            <h4>Navegação</h4>
+            <a href="#produtos">Produtos</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#contato">Contato</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Contato</h4>
+            <p>(71) 99116-2761</p>
+            <p>contato&#64;pudimdadidi.com</p>
+            <p>Salvador, BA</p>
+        </div>
+
+        <div class="footer-col">
+            <h4>Horário</h4>
+            <p>Seg - Sex: 10h - 18h</p>
+            <p>Sábado: 10h - 16h</p>
+            <p>Domingo: Fechado</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 O Pudim da Didi. Todos os direitos reservados.</p>
+    </div>
+</footer>
