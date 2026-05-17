@@ -64,8 +64,15 @@
                         </div>
 
                         <div class="produto-footer">
-                            <span class="total">Total: R$ {{getTotal(produto) | number: '1.2-2'}}</span>
-                            <button class="btn-primary">Adicionar ao Carrinho</button>
+                            <span class="total">Total: R$ {{ getTotal(produto) | number:'1.2-2' }}</span>
+                            <div class="btn-group">
+                                @if (mensagem[produto.nome]) {
+                                <span class="msg-sucesso">{{ mensagem[produto.nome] }}</span>
+                                }
+                                <button class="btn-primary" (click)="adicionarAoCarrinho(produto)">
+                                Adicionar ao Carrinho
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

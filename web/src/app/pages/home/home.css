@@ -40,6 +40,18 @@
 
 .hero-buttons { display: flex; gap: 1rem; }
 
+.btn-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.msg-sucesso {
+  color: #a0522d;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
 .btn-primary {
   background-color: #a0522d;
   color: white !important;

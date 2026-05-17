@@ -17,7 +17,7 @@ export class CartService {
   }
 
   verCarrinho(): Observable<Cart> {
-    return this.http.post<Cart>(this.apiUrl, {headers: this.headers()});
+    return this.http.get<Cart>(this.apiUrl, {headers: this.headers()});
   }
 
   adicionarItem(productId: number, quantidade: number): Observable<Cart> {
