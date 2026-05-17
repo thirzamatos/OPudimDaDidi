@@ -76,7 +76,7 @@ export class Home {
         {
           nome: 'Pudim de Chocolate',
           descricao: 'Todo o sabor do pudim tradicional sem lactose, para você aproveitar sem restrições.',
-          imagem: '/imagens/zero-lactose-pudim.jpeg',
+          imagem: '/imagens/chocolate-pudim.jpeg',
           tamanhos: [
             {label: '120g', porcoes: '1 porção', preco: '10.00'},
             {label: '500g', porcoes: '6 porção', preco: '38.00'},

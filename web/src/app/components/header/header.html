@@ -15,9 +15,22 @@
       <a href="#contato" class="nav-link-item">Contato</a>
     </nav>
 
-    <a routerLink="/carrinho" class="cart-btn">
-      <mat-icon [matBadge]="'0'" matBadgeSize="small" matBadgeColor="warn">shopping_cart</mat-icon>
-    </a>
+    <div class="nav-right">
+      @if (!auth.isLogado()) {
+        <a routerLink="/login" class="icon-btn">
+          <mat-icon>account_circle</mat-icon>
+        </a>
+      } @else {
+        @if (auth.isVendedor()) {
+          <a routerLink="/vendedor/dashboard" class="btn-entrar">Painel</a>
+        }
+        <a routerLink="/meus-pedidos" class="btn-entrar">Meus Pedidos</a>
+        <button class="btn-sair" (click)="auth.logout()">Sair</button>
+      }
+      <a routerLink="/carrinho" class="icon-btn">
+        <mat-icon [matBadge]="'0'" matBadgeSize="small" matBadgeColor="warn">shopping_cart</mat-icon>
+      </a>
+    </div>
 
   </div>
 </header>

@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
-import { RouterOutlet} from '@angular/router';
+import { RouterOutlet, Router, NavigationEnd} from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { filter } from 'rxjs';
 import { Header } from './components/header/header';
 
 @Component({
@@ -14,4 +15,14 @@ import { Header } from './components/header/header';
   styleUrl: './app.css'
 })
 export class App {
+  mostrarHeader = true;
+
+  constructor(private router: Router) {
+    this.router.events.pipe(
+      filter(e => e instanceof NavigationEnd)
+    ).subscribe((e: any) => {
+      const rotasSemHeader = ['/login', '/cadastro'];
+      this.mostrarHeader = !rotasSemHeader.includes(e.url);
+    });
+  }
 }

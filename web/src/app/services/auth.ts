@@ -16,6 +16,12 @@ export class AuthService {
     return this.http.post<User>(`${this.apiUrl}/registrar`, {nome, email, senha}).pipe(tap(res => this.salvarSessao(res)));
   }
 
+  login(email: string, senha: string): Observable<User> {
+    return this.http.post<User>(`${this.apiUrl}/login`, {email, senha}).pipe(
+      tap(res => this.salvarSessao(res))
+    );
+  }
+
   private salvarSessao(user: User): void {
     localStorage.setItem('token', user.token);
     localStorage.setItem('nome', user.nome);

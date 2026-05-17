@@ -5,7 +5,7 @@
   justify-content: space-between;
   gap: 4rem;
   min-height: calc(100vh - 90px);
-  padding: 4rem 8rem;
+  padding: 4rem 25rem;
   background: linear-gradient(135deg, #fdf8f4 0%, #fef3e8 100%);
 }
 
