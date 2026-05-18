@@ -16,8 +16,8 @@ export class OrderService {
     return new HttpHeaders({Authorization: `Bearer ${this.auth.getToken()}`});
   }
 
-  criarPedido(items: {productId: number, quantidade: number}[]): Observable<Order> {
-    return this.http.post<Order>(this.apiUrl, {items}, {headers: this.headers()});
+  criarPedido(items: {productId: number, quantidade: number}[], endereco: string, formaPagamento: string): Observable<Order> {
+    return this.http.post<Order>(this.apiUrl, {items, endereco, formaPagamento}, {headers: this.headers()});
   }
 
   meusPedidos(): Observable<Order[]> {

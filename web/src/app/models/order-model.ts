@@ -13,5 +13,7 @@ export interface Order {
     status: string;
     criadoEm: string;
     total: number;
+    endereco: string;
+    formaPagamento: string;
     items: OrderItem[];
 }

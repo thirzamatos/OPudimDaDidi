@@ -1,0 +1,137 @@
+.pedidos-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.pedidos-container h1 {
+  font-family: Georgia, serif;
+  font-size: 2rem;
+  color: #2c1a0e;
+  margin-bottom: 2rem;
+}
+
+.loading, .vazio {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #7a5c4a;
+}
+
+.loading mat-icon, .vazio mat-icon {
+  font-size: 4rem;
+  width: 4rem;
+  height: 4rem;
+  color: #c8a882;
+}
+
+.vazio h2 {
+  font-size: 1.4rem;
+  color: #2c1a0e;
+  margin: 1rem 0 0.5rem;
+}
+
+.vazio p { margin-bottom: 1.5rem; }
+
+.btn-primary {
+  background-color: #a0522d;
+  color: white !important;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none !important;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.btn-primary:hover { background-color: #8b4513; }
+
+.pedido-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.pedido-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f0e8e0;
+}
+
+.pedido-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.pedido-num {
+  font-weight: 700;
+  color: #2c1a0e;
+  font-size: 1rem;
+}
+
+.pedido-data {
+  color: #7a5c4a;
+  font-size: 0.82rem;
+}
+
+.status-badge {
+  padding: 0.35rem 0.9rem;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.status-pendente { background: #fef3cd; color: #856404; }
+.status-confirmado { background: #d1ecf1; color: #0c5460; }
+.status-preparo { background: #fff3cd; color: #856404; }
+.status-entregue { background: #d4edda; color: #155724; }
+.status-cancelado { background: #f8d7da; color: #721c24; }
+
+.pedido-itens {
+  margin-bottom: 1rem;
+}
+
+.item-mini {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.4rem 0;
+  color: #5c3d2e;
+  font-size: 0.88rem;
+}
+
+.item-mini img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.pedido-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid #f0e8e0;
+}
+
+.pedido-total {
+  font-weight: 700;
+  color: #2c1a0e;
+  font-size: 1rem;
+}
+
+.btn-detalhe {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #a0522d !important;
+  text-decoration: none !important;
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.btn-detalhe:hover { color: #8b4513 !important; }

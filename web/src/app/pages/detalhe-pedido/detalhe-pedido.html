@@ -1,1 +1,85 @@
-<p>detalhe-pedido works!</p>
+<div class="detalhe-container">
+    @if(carregando) {
+        <div class="loading">
+            <mat-icon>hourglass_empty</mat-icon>
+            <p>Carregando pedido...</p>
+        </div>
+    } @else if (!order) {
+        <div class="vazio">
+            <mat-icon>error_outline</mat-icon>
+            <h2>Pedido não encontrado</h2>
+            <a routerLink="/meuspedidos" class="btn-primary">Meus Pedidos</a>
+        </div>
+    } @else {
+        <div class="sucesso-header">
+            <mat-icon class="sucesso-icon">check_circle</mat-icon>
+            <h1>Pedido Realizado</h1>
+            <p>Seu pedido #{{order.id}} foi recebido com sucesso.</p>
+        </div>
+
+        <div class="detalhe-content">
+            <div class="detalhe-left">
+                <div class="secao">
+                    <h2>Status do Pedido</h2>
+                    <div class="status-badge" [ngClass]="getStatusClass(order.status)">
+                        <mat-icon>{{getStatusIcon(order.status)}}</mat-icon>
+                        <span>{{order.status | titlecase}}</span>
+                    </div>
+                </div>
+
+                <div class="secao">
+                    <h2>Itens do Pedido</h2>
+                    @for(item of order.items; track item.id) {
+                        <div class="item-linha">
+                            <img [src]="item.product.imagemUrl" [alt]="item.product.nome">
+                            <div class="item-desc">
+                                <span class="item-nome">{{item.product.nome}}</span>
+                                <span class="item-nome">{{item.product.tamanho}}</span>
+                            </div>
+                            <div class="item-qty-preco">
+                                <span>{{item.quantidade}}x</span>
+                                <span>R$ {{(item.precoUnitario * item.quantidade) | number:'1.2-2'}}</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div class="secao">
+                    <h2>Endereço de Entrega</h2>
+                    <p class="info-text">{{order.endereco}}</p>
+                </div>
+
+                <div class="secao">
+                    <h2>Forma de Pagamento</h2>
+                    <p class="info-text">{{order.formaPagamento}}</p>
+                </div>
+            </div>
+
+            <div class="detalhe-right">
+                <div class="resumo">
+                    <h2>Resumo</h2>
+                    <div class="resumo-linha">
+                        <span>Pedido</span>
+                        <span>#{{order.id}}</span>
+                    </div>
+
+                    <div class="resumo-linha">
+                        <span>Data</span>
+                        <span>{{order.criadoEm | date: 'dd/MM/yyyy HH:mm'}}</span>
+                    </div>
+
+                    <div class="resumo-linha total">
+                        <span>Total</span>
+                        <span>R$ {{order.total | number:'1.2-2'}}</span>
+                    </div>
+
+                    <a routerLink="/" class="btn-primary">Continuar Comprando</a>
+                    <a routerLink="/meus-pedidos" class="btn-voltar">
+                        <mat-icon>list</mat-icon>
+                        Meus Pedidos
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
