@@ -36,13 +36,17 @@ export class Carrinho implements OnInit {
   }
 
   remover(productId: number): void {
-    this.cartService.removerItem(productId).subscribe({
-      next: (cart) => {
-        this.cart = cart;
-        this.cdr.detectChanges();
-      }
-    });
-  }
+  console.log('Removendo productId:', productId);
+  this.cartService.removerItem(productId).subscribe({
+    next: (cart) => {
+      this.cart = cart;
+      this.cdr.detectChanges();
+    },
+    error: (err) => {
+      console.log('Erro ao remover:', err);
+    }
+  });
+}
 
   limpar(): void {
     this.cartService.limpar().subscribe({

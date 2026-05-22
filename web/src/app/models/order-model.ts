@@ -1,5 +1,11 @@
 import { Product } from './product-model';
 
+export interface OrderUser {
+    id: number;
+    nome: string;
+    email: string;
+}
+
 export interface OrderItem {
     id: number;
     productId: number;
@@ -10,6 +16,8 @@ export interface OrderItem {
 
 export interface Order {
     id: number;
+    userId: number;
+    user?: OrderUser;
     status: string;
     criadoEm: string;
     total: number;

@@ -8,6 +8,8 @@
         public DateTime CriadoEm { get; set; } = DateTime.UtcNow;
         public string Status { get; set; } = "pendente";
         public decimal Total { get; set; }
+        public string Endereco { get; set; } = string.Empty;
+        public string FormaPagamento { get; set; } = string.Empty;
         public List<OrderItem> Items { get; set; } = new();
     }
 }

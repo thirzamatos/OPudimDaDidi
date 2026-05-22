@@ -33,6 +33,10 @@ export class OrderService {
   }
 
   atualizarStatus(id: number, status: string): Observable<Order> {
-    return this.http.put<Order>(`${this.apiUrl}/${id}/status`, JSON.stringify(status), {headers: this.headers()});
-  }
+  const headers = new HttpHeaders({
+    Authorization: `Bearer ${this.auth.getToken()}`,
+    'Content-Type': 'application/json'
+  });
+  return this.http.put<Order>(`${this.apiUrl}/${id}/status`, { status }, { headers });
+}
 }

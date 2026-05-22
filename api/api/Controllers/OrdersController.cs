@@ -27,7 +27,9 @@ namespace api.Controllers
             var order = new Order
             {
                 UserId = userId,
-                Status = "pendente"
+                Status = "pendente",
+                Endereco = dto.Endereco,
+                FormaPagamento = dto.FormaPagamento
             };
             decimal total = 0;
 
@@ -89,17 +91,17 @@ namespace api.Controllers
 
         [Authorize(Roles = "vendedor")]
         [HttpPut("{id}/status")]
-        public async Task<IActionResult> AtualizarStatus(int id, [FromBody] string novoStatus)
+        public async Task<IActionResult> AtualizarStatus(int id, [FromBody] StatusDTO dto)
         {
             var statusValidos = new[] { "pendente", "confirmado", "em preparo", "entregue", "cancelado" };
-            if (!statusValidos.Contains(novoStatus))
+            if (!statusValidos.Contains(dto.Status))
                 return BadRequest("Status inválido!");
 
             var order = await _context.Orders.FindAsync(id);
             if (order == null)
                 return NotFound();
 
-            order.Status = novoStatus;
+            order.Status = dto.Status;
             await _context.SaveChangesAsync();
 
             return Ok(order);

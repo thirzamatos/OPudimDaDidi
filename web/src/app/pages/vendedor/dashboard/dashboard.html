@@ -1,1 +1,87 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+    <h1>Dashboard</h1>
+
+    @if(carregando) {
+        <div class="loading">
+            <mat-icon>hourglass_empty</mat-icon>
+            <p>Carregando...</p>
+        </div>
+    } @else {
+        <div class="cards-grid">
+            <div class="stat-card">
+                <mat-icon>receipt_long</mat-icon>
+
+                <div class="stat-info">
+                    <span class="stat-valor">{{totalPedidos}}</span>
+                    <span class="stat-label">Total de Pedidos</span>
+                </div>
+            </div>
+            <div class="stat-card pendente">
+                <mat-icon>schedule</mat-icon>
+                <div class="stat-info">
+                    <span class="stat-valor">{{pedidosPendentes}}</span>
+                    <span class="stat-label">Pendetes</span>
+                </div>
+            </div>
+            <div class="stat-card entregue">
+                <mat-icon>local_shipping</mat-icon>
+                <div class="stat-info">
+                    <span class="stat-valor">{{pedidosEntregues}}</span>
+                    <span class="stat-label">Entregues</span>
+                </div>
+            </div>
+
+            <div class="stat-card faturado">
+                <mat-icon>payments</mat-icon>
+                <div class="stat-info">
+                    <span class="stat-valor">R$ {{totalFaturado | number: '1.2-2'}}</span>
+                    <span class="stat-label">Total Faturado</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="atalhos">
+            <a routerLink="/vendedor/pedidos" class="atalho-card">
+                <mat-icon>list_alt</mat-icon>
+                <span>Gerenciar Pedidos</span>
+            </a>
+
+            <a routerLink="/vendedor/produtos" class="atalho-card">
+                <mat-icon>inventory_2</mat-icon>
+                <span>Gerenciar Produtos</span>
+            </a>
+        </div>
+
+        <div class="ultimos-pedidos">
+            <h2>Últimos Pedidos</h2>
+            @if(orders.length === 0) {
+                <p class="sem-pedidos">Nenhum pedido ainda.</p>
+            } @else {
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Pedido</th>
+                            <th>Cliente</th>
+                            <th>Data</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for(order of orders.slice(0, 5); track order.id) {
+                            <tr>
+                                <td>#{{order.id}}</td>
+                                <td>{{order.user?.nome ?? 'Cliente'}}</td>
+                                <td>{{order.criadoEm | date:'dd/MM/yyyy'}}</td>
+                                <td>R$ {{order.total | number:'1.2-2'}}</td>
+                                <td>
+                                    <span class="status-mini status-{{order.status.replace(' ', '-')}}">{{order.status | titlecase}}</span>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    }
+</div>

@@ -28,9 +28,13 @@
         <button class="btn-sair" (click)="auth.logout()">Sair</button>
       }
       <a routerLink="/carrinho" class="icon-btn">
-        <mat-icon [matBadge]="'0'" matBadgeSize="small" matBadgeColor="warn">shopping_cart</mat-icon>
+        <span class="cart-wrapper">
+          <mat-icon>shopping_cart</mat-icon>
+          @if (cartCount > 0) {
+            <span class="cart-badge">{{ cartCount }}</span>
+          }
+        </span>
       </a>
     </div>
-
   </div>
 </header>

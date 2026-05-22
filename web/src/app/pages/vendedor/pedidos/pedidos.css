@@ -1,0 +1,181 @@
+.pedidos-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.page-header h1 {
+  font-family: Georgia, serif;
+  font-size: 2rem;
+  color: #2c1a0e;
+  margin: 0;
+}
+
+.btn-voltar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #a0522d !important;
+  text-decoration: none !important;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.loading, .vazio {
+  text-align: center;
+  padding: 4rem;
+  color: #7a5c4a;
+}
+
+.loading mat-icon, .vazio mat-icon {
+  font-size: 4rem;
+  width: 4rem;
+  height: 4rem;
+  color: #c8a882;
+}
+
+.pedido-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.pedido-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f0e8e0;
+}
+
+.pedido-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.pedido-num {
+  font-weight: 700;
+  color: #2c1a0e;
+  font-size: 1rem;
+}
+
+.pedido-cliente {
+  color: #a0522d;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.pedido-data {
+  color: #7a5c4a;
+  font-size: 0.82rem;
+}
+
+.pedido-total {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #2c1a0e;
+}
+
+.pedido-itens {
+  margin-bottom: 1rem;
+}
+
+.item-mini {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.4rem 0;
+  font-size: 0.88rem;
+  color: #5c3d2e;
+}
+
+.item-mini img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.pedido-detalhes {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: #fdf8f4;
+  border-radius: 8px;
+}
+
+.detalhe-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #5c3d2e;
+}
+
+.detalhe-item mat-icon {
+  font-size: 1.1rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  color: #a0522d;
+}
+
+.pedido-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid #f0e8e0;
+}
+
+.status-badge {
+  padding: 0.35rem 0.9rem;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.status-pendente { background: #fef3cd; color: #856404; }
+.status-confirmado { background: #d1ecf1; color: #0c5460; }
+.status-preparo { background: #fff3cd; color: #856404; }
+.status-entregue { background: #d4edda; color: #155724; }
+.status-cancelado { background: #f8d7da; color: #721c24; }
+
+.status-update {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-select {
+  padding: 0.4rem 0.75rem;
+  border: 2px solid #e0d5cc;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #2c1a0e;
+  cursor: pointer;
+  outline: none;
+}
+
+.status-select:focus { border-color: #a0522d; }
+
+.spin {
+  animation: spin 1s linear infinite;
+  color: #a0522d;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

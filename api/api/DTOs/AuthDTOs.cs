@@ -34,6 +34,8 @@
     public class CriarPedidoDTO
     {
         public List<ItemPedidoDTO> Items { get; set; } = new();
+        public string Endereco { get; set; } = string.Empty;
+        public string FormaPagamento { get; set; }
     }
     
     public class ItemPedidoDTO
@@ -46,5 +48,10 @@
     {
         public int ProductId { get; set; }
         public int Quantidade { get; set; }
+    }
+
+    public class StatusDTO
+    {
+        public string Status { get; set; } = string.Empty;
     }
 }

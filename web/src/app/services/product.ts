@@ -33,6 +33,9 @@ export class ProductService {
   }
 
   deletar(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`, {headers: this.headers()});
-  }
+  return this.http.delete(`${this.apiUrl}/${id}`, { 
+    headers: this.headers(),
+    responseType: 'text'
+  });
+}
 }

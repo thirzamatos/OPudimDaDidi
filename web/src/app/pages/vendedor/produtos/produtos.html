@@ -1,1 +1,99 @@
-<p>produtos works!</p>
+<div class="produtos-container">
+  <div class="page-header">
+    <h1>Gerenciar Produtos</h1>
+    <div class="header-acoes">
+      <button class="btn-novo" (click)="abrirCriar()">
+        <mat-icon>add</mat-icon>
+        Novo Produto
+      </button>
+      <a routerLink="/vendedor/dashboard" class="btn-voltar">
+        <mat-icon>arrow_back</mat-icon>
+        Dashboard
+      </a>
+    </div>
+  </div>
+
+  @if (carregando) {
+    <div class="loading">
+      <mat-icon>hourglass_empty</mat-icon>
+      <p>Carregando produtos...</p>
+    </div>
+  } @else {
+    <div class="produtos-grid">
+      @for (product of products; track product.id) {
+        <div class="produto-card">
+          <img [src]="product.imagemUrl" [alt]="product.nome" />
+          <div class="produto-info">
+            <h3>{{ product.nome }}</h3>
+            <span class="produto-tamanho">{{ product.tamanho }}</span>
+            <span class="produto-preco">R$ {{ product.preco | number:'1.2-2' }}</span>
+            <p>{{ product.descricao }}</p>
+          </div>
+          <div class="produto-acoes">
+            <button class="btn-editar" (click)="editar(product)">
+              <mat-icon>edit</mat-icon>
+              Editar
+            </button>
+            @if (confirmandoDelete === product.id) {
+              <div class="confirm-delete">
+                <span>Confirmar?</span>
+                <button class="btn-sim" (click)="confirmarDesativar(product)">Sim</button>
+                <button class="btn-nao" (click)="confirmandoDelete = null">Não</button>
+              </div>
+            } @else {
+              <button class="btn-desativar" (click)="confirmandoDelete = product.id">
+                <mat-icon>delete_outline</mat-icon>
+                Desativar
+              </button>
+            }
+          </div>
+        </div>
+      }
+    </div>
+
+    @if (editando || criando) {
+      <div class="form-inline">
+        <h2>{{ editando ? 'Editar Produto' : 'Novo Produto' }}</h2>
+
+        <div class="form-group">
+          <label>Nome</label>
+          <input type="text" [(ngModel)]="form.nome" class="form-input" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Sabor</label>
+            <input type="text" [(ngModel)]="form.sabor" class="form-input" />
+          </div>
+          <div class="form-group">
+            <label>Tamanho</label>
+            <input type="text" [(ngModel)]="form.tamanho" class="form-input" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Descrição</label>
+          <textarea [(ngModel)]="form.descricao" class="form-input" rows="3"></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Preço</label>
+            <input type="number" [(ngModel)]="form.preco" class="form-input" />
+          </div>
+          <div class="form-group">
+            <label>URL da Imagem</label>
+            <input type="text" [(ngModel)]="form.imagemUrl" class="form-input" />
+          </div>
+        </div>
+
+        <div class="form-footer">
+          <button class="btn-cancelar" (click)="cancelar()">Cancelar</button>
+          <button class="btn-salvar" (click)="editando ? salvar() : criar()" [disabled]="salvando">
+            @if (salvando) { Salvando... } @else { {{ editando ? 'Salvar' : 'Criar Produto' }} }
+          </button>
+        </div>
+      </div>
+    }
+  }
+</div>

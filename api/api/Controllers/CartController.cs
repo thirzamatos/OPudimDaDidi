@@ -84,7 +84,9 @@ namespace api.Controllers
 
             _context.CartItems.Remove(item);
             await _context.SaveChangesAsync();
-            return Ok(cart);
+
+            var cartAtualizado = await GetOrCreateCart(GetUserId());
+            return Ok(cartAtualizado);
         }
 
         [HttpDelete("limpar")]
