@@ -16,25 +16,29 @@
     </nav>
 
     <div class="nav-right">
-      @if (!auth.isLogado()) {
+      @if (auth.isLogado()) {
+        @if (auth.isVendedor()) {
+          <a routerLink="/vendedor/dashboard" class="btn-entrar">Painel</a>
+        } @else {
+          <a routerLink="/meus-pedidos" class="btn-entrar">Meus Pedidos</a>
+        }
+        <button class="btn-sair" (click)="auth.logout()">Sair</button>
+      } @else {
         <a routerLink="/login" class="icon-btn">
           <mat-icon>account_circle</mat-icon>
         </a>
-      } @else {
-        @if (auth.isVendedor()) {
-          <a routerLink="/vendedor/dashboard" class="btn-entrar">Painel</a>
-        }
-        <a routerLink="/meus-pedidos" class="btn-entrar">Meus Pedidos</a>
-        <button class="btn-sair" (click)="auth.logout()">Sair</button>
       }
-      <a routerLink="/carrinho" class="icon-btn">
-        <span class="cart-wrapper">
-          <mat-icon>shopping_cart</mat-icon>
-          @if (cartCount > 0) {
-            <span class="cart-badge">{{ cartCount }}</span>
-          }
-        </span>
-      </a>
+      @if (!auth.isVendedor()) {
+        <a routerLink="/carrinho" class="icon-btn">
+          <span class="cart-wrapper">
+            <mat-icon>shopping_cart</mat-icon>
+            @if (cartCount > 0) {
+              <span class="cart-badge">{{ cartCount }}</span>
+            }
+          </span>
+        </a>
+      }
     </div>
+
   </div>
 </header>
