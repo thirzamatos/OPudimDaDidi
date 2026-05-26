@@ -3,12 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject, tap } from 'rxjs';
 import { Cart } from '../models/cart-model';
 import { AuthService } from './auth';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  private apiUrl = 'http://localhost:5157/api/cart';
+  private apiUrl = `${environment.apiUrl}/api/products`;
   cartAtualizado$ = new Subject<void>();
 
   constructor(private http: HttpClient, private auth: AuthService) {}

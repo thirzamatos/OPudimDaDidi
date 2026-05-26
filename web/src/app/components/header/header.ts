@@ -49,7 +49,7 @@ export class Header implements OnInit, OnDestroy {
     if (this.auth.isLogado()) {
       this.cartService.verCarrinho().subscribe({
         next: (cart) => {
-          this.cartCount = cart.items.reduce((acc, item) => acc + item.quantidade, 0);
+          this.cartCount = cart?.items?.reduce((acc, item) => acc + item.quantidade, 0) ?? 0;
           this.cdr.detectChanges();
         }
       });
