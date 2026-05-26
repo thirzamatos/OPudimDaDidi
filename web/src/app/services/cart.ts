@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class CartService {
-  private apiUrl = `${environment.apiUrl}/api/products`;
+  private apiUrl = `${environment.apiUrl}/api/cart`;
   cartAtualizado$ = new Subject<void>();
 
   constructor(private http: HttpClient, private auth: AuthService) {}
