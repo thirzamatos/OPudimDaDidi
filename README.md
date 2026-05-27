@@ -26,11 +26,11 @@
   6. Endpoints da API:
      Abaixo estão os principais endpoints disponíveis no sistema:
 
-      Autenticação - POST - /api/auth/registrar - Cadastro de novos clientes
-      Autenticação - POST - /api/auth/login - Autenticação de usuários
-      Produtos - GET - /api/products - Lista todos os produtos ativos
-      Produtos - POST - /api/products - Criação de produto (Restrito: Vendedor)
-      Carrinho - GET - /api/cart - Obtém o carrinho do usuário logado
-      Pedidos - POST - /api/orders - Finalização de um novo pedido
-      Pedidos - GET - /api/orders/meus-pedidos - Histórico de pedidos do cliente
-      Administração - PUT - /api/orders/{id}/status - Atualiza status do pedido (Restrito: Vendedor)     
+      . Autenticação - POST - /api/auth/registrar - Cadastro de novos clientes
+      . Autenticação - POST - /api/auth/login - Autenticação de usuários
+      . Produtos - GET - /api/products - Lista todos os produtos ativos
+      . Produtos - POST - /api/products - Criação de produto (Restrito: Vendedor)
+      . Carrinho - GET - /api/cart - Obtém o carrinho do usuário logado
+      . Pedidos - POST - /api/orders - Finalização de um novo pedido
+      . Pedidos - GET - /api/orders/meus-pedidos - Histórico de pedidos do cliente
+      . Administração - PUT - /api/orders/{id}/status - Atualiza status do pedido (Restrito: Vendedor)     
